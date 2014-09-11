@@ -78,6 +78,13 @@ def make_vhost():
     # run('touch %s/error.log' % APP_ROOT)
 
 
+def make_gunicorn_config():
+    config = open(os.path.join(__location__, 'gunicorn_flask.tpl'))
+    interpolated = StringIO.StringIO()
+    interpolated.write(_render_template(config.read()))
+    put(interpolated, '/', use_sudo=True)
+
+
 def clone_repo():
     with cd(APPS_DIR):
         run('hg clone %(repos)s%(vhost)s %(to)s' % {'repos': REPOS, 'vhost': VHOST, 'to': APP_ROOT})

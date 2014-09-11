@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
 from flask.ext.script import Manager, Server
-from app.main import app
+from wsgi import app
 
 manager = Manager(app)
 

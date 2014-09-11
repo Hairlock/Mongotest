@@ -3,9 +3,8 @@
 NAME="shorelands"
 FLASKDIR=www/shorelands
 VENVDIR=www/shorelands/shore
-SOCKFILE=/Code/flask_app/sock
-USER=captain
-GROUP=captain
+SOCKFILE=www/shorelands/sock
+USER=root
 NUM_WORKERS=3
 
 echo "Starting $NAME"
@@ -24,6 +23,6 @@ test -d $RUNDIR || mkdir -p $RUNDIR
 exec gunicorn main:app -b 127.0.0.1:8000 \
   --name $NAME \
   --workers $NUM_WORKERS \
-  --user=$USER --group=$GROUP \
+  --user=$USER
   --log-level=debug \
   --bind=unix:$SOCKFILE
