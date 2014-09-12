@@ -1,7 +1,7 @@
 import datetime
 
 from flask import url_for
-from wsgi import db
+from app import db
 
 
 class Post(db.DynamicDocument):
